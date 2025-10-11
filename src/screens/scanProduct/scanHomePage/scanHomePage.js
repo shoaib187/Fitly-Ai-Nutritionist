@@ -13,7 +13,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from "react-native-vector-icons/Ionicons"
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
-const ScanScreen = ({ navigation }) => {
+export default function ScanHomePage({ navigation }) {
   const [scanMode, setScanMode] = useState('camera'); // 'camera', 'voice', 'barcode'
   const [showResults, setShowResults] = useState(false);
   const [scannedFood, setScannedFood] = useState(null);
@@ -464,5 +464,3 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
-
-export default ScanScreen;

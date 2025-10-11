@@ -7,14 +7,13 @@ import {
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
-  Image,
 } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from "react-native-vector-icons/Ionicons"
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
 
-const MindfulScreen = ({ navigation }) => {
+export default function MindfulHomePage({ navigation }) {
   const [currentMood, setCurrentMood] = useState(null);
   const [activeExercise, setActiveExercise] = useState(null);
 
@@ -572,5 +571,3 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
-
-export default MindfulScreen;
