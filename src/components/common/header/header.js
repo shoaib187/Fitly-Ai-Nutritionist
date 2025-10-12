@@ -1,26 +1,48 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
-
-const Header = ({ greeting, userName }) => (
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { FontSize, ImageStyle, Radius, Spacing } from '../../constants/constant/responsive/responsive';
+import { colors, Colors } from '../../constants/theme/theme';
+import { Fonts } from '../../constants/fonts/font';
+import Ionicons from "react-native-vector-icons/Ionicons"
+const Header = ({ userName, theme, date, navigation }) => (
   <View style={styles.header}>
-    <View>
-      <Text style={styles.greeting}>{greeting}, {userName} 👋</Text>
-      <Text style={styles.subtitle}>How are you feeling today?</Text>
+    <View style={{ flex: 1 }}>
+      <Text style={[styles.greeting, { color: theme?.colors?.textPrimary }]}>{userName}</Text>
+      <Text style={[styles.subtitle]}>Today, {date?.slice(0, 10)}</Text>
     </View>
-    <TouchableOpacity style={styles.avatar}>
-      <Image
-        source={{ uri: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150' }}
-        style={styles.avatarImage}
-      />
+    <TouchableOpacity onPress={() => navigation.navigate("Notifications")} style={[styles.avatar, { borderColor: theme?.colors?.border }]}>
+      <Ionicons name="notifications-outline" size={20} />
     </TouchableOpacity>
   </View>
 );
 
+
+
 const styles = StyleSheet.create({
-  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 24, paddingTop: 16, paddingBottom: 8 },
-  greeting: { fontSize: 28, fontWeight: 'bold', color: '#F8FAFC', marginBottom: 4 },
-  subtitle: { fontSize: 16, color: '#94A3B8' },
-  avatar: { width: 50, height: 50, borderRadius: 25, overflow: 'hidden', borderWidth: 2, borderColor: '#6366F1' },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between', alignItems: 'center',
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.lg - 16,
+  },
+  greeting: {
+    fontSize: FontSize.lg,
+    color: Colors.dark.textPrimary,
+    marginBottom: Spacing.xs,
+    fontFamily: Fonts.RalewayBold
+  },
+  subtitle: {
+    fontSize: FontSize.sm, color: colors.textColor, fontFamily: Fonts.RalewayMedium
+  },
+  avatar: {
+    width: ImageStyle.width,
+    height: ImageStyle.width,
+    borderRadius: Radius.xl,
+    overflow: 'hidden',
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   avatarImage: { width: '100%', height: '100%' },
 });
 

@@ -2,18 +2,19 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import CircularProgress from '../../../common/circularProgress/circularProgress';
 import AnimatedProgressBar from '../../../common/animatedProgressBar/animatedProgressBar';
+import { FontSize, Radius, Spacing } from '../../../constants/constant/responsive/responsive';
 
 
-const OverviewSection = ({ statsData }) => (
+const OverviewSection = ({ statsData, theme }) => (
   <View style={styles.section}>
     <View style={styles.header}>
-      <Text style={styles.title}>Today's Overview</Text>
+      <Text style={[styles.title, { color: theme?.colors?.textPrimary }]}>Today's Overview</Text>
       <TouchableOpacity>
-        <Text style={styles.link}>Details</Text>
+        <Text style={[styles.link, { color: theme?.colors?.textSecondary }]}>Details</Text>
       </TouchableOpacity>
     </View>
 
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: theme.colors?.surface }]}>
       <View style={styles.row}>
         {Object.entries(statsData).map(([key, stat]) => (
           <CircularProgress
@@ -40,11 +41,11 @@ const OverviewSection = ({ statsData }) => (
 );
 
 const styles = StyleSheet.create({
-  section: { marginTop: 24, paddingHorizontal: 24 },
+  section: { marginTop: Spacing.md, paddingHorizontal: Spacing.md },
   header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 },
-  title: { fontSize: 20, fontWeight: 'bold', color: '#F8FAFC' },
-  link: { fontSize: 14, color: '#6366F1', fontWeight: '600' },
-  container: { backgroundColor: '#1E293B', borderRadius: 20, padding: 20 },
+  title: { fontSize: FontSize.md, fontWeight: 'bold', },
+  link: { fontSize: FontSize.sm, fontWeight: '600' },
+  container: { borderRadius: Radius.lg, padding: Spacing.lg },
   row: { flexDirection: 'row', justifyContent: 'space-around', marginBottom: 24 },
   progressItem: { marginBottom: 16 },
   progressHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 },

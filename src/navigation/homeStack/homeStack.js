@@ -11,6 +11,8 @@ const HomeStack = () => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="HomePage" component={screens.HomePage} options={{ title: 'Home' }} />
+      <Stack.Screen name="Notifications" component={screens.Notification} />
+
     </Stack.Navigator>
   );
 };

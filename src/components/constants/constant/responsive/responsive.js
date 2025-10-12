@@ -22,6 +22,7 @@ export const FontSize = {
   lg: RFValue(18),  // ≈ 18 px
   xl: RFValue(22),  // ≈ 22 px
   xxl: RFValue(28), // ≈ 28 px
+  base: RFValue(12.5)
 };
 
 export const Radius = {
@@ -44,3 +45,7 @@ export const Responsive = {
   RFValue,
   RFPercentage,
 };
+
+export const ImageStyle = {
+  width: wp(12),
+}

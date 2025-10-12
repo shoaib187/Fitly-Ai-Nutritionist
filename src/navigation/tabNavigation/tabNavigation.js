@@ -1,71 +1,71 @@
-// In your App.js or Navigation.js
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { screens } from '../../components/constants/constant/screens';
-import Ionicons from "react-native-vector-icons/Ionicons"
+import Ionicons from "react-native-vector-icons/Ionicons";
 import HomeStack from '../homeStack/homeStack';
+import { colors } from '../../components/constants/theme/theme';
+import DiscoverStack from '../discoverStack/discoverStack';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={({ route }) => ({
+        headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#0F172A',
-          borderTopColor: '#1E293B',
+          backgroundColor: colors.white,
+          borderTopColor: colors.buttonColor,
+          height: 60,
+          paddingBottom: 6,
         },
-        tabBarActiveTintColor: '#6366F1',
-        tabBarInactiveTintColor: '#64748B',
-        headerShown: false
-      }}
+        tabBarActiveTintColor: colors.buttonColor,
+        tabBarInactiveTintColor: colors.backdrop,
+        tabBarHideOnKeyboard: true,
+
+        // eslint-disable-next-line react/no-unstable-nested-components
+        tabBarIcon: ({ color, focused }) => {
+          let iconName;
+
+          switch (route.name) {
+            case 'Home':
+              iconName = focused ? 'home' : 'home-outline';
+              break;
+            case 'Discover':
+              iconName = focused ? 'compass' : 'compass-outline';
+              break;
+            case 'Scan':
+              iconName = focused ? 'camera' : 'camera-outline';
+              break;
+            case 'Mindful':
+              iconName = focused ? 'heart' : 'heart-outline';
+              break;
+            case 'Profile':
+              iconName = focused ? 'person' : 'person-outline';
+              break;
+            default:
+              iconName = 'ellipse-outline';
+          }
+
+          return (
+            <Ionicons
+              name={iconName}
+              size={focused ? 30 : 26}
+              color={color}
+              style={{
+                transform: [{ scale: focused ? 1.1 : 1 }],
+              }}
+            />
+          );
+        },
+      })}
     >
-      <Tab.Screen
-        name="Home"
-        component={HomeStack}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Discover"
-        component={screens.DiscoverHomePage}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="compass" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Scan"
-        component={screens.ScanHomePage}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="camera" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Mindful"
-        component={screens.MindfulHomePage}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="heart" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={screens.ProfileHomePage}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person" size={size} color={color} />
-          ),
-        }}
-      />
+      <Tab.Screen name="Home" component={HomeStack} />
+      <Tab.Screen name="Discover" component={DiscoverStack} />
+      <Tab.Screen name="Scan" component={screens.ScanHomePage} />
+      <Tab.Screen name="Mindful" component={screens.MindfulHomePage} />
+      <Tab.Screen name="Profile" component={screens.ProfileHomePage} />
     </Tab.Navigator>
   );
-}
+};
 
-export { TabNavigation }
+export { TabNavigation };
