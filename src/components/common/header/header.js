@@ -4,11 +4,12 @@ import { FontSize, ImageStyle, Radius, Spacing } from '../../constants/constant/
 import { colors, Colors } from '../../constants/theme/theme';
 import { Fonts } from '../../constants/fonts/font';
 import Ionicons from "react-native-vector-icons/Ionicons"
-const Header = ({ userName, theme, date, navigation }) => (
+const Header = ({ userName, theme, date, navigation, subtitle, showDate = false }) => (
   <View style={styles.header}>
     <View style={{ flex: 1 }}>
       <Text style={[styles.greeting, { color: theme?.colors?.textPrimary }]}>{userName}</Text>
-      <Text style={[styles.subtitle]}>Today, {date?.slice(0, 10)}</Text>
+      {showDate && <Text style={[styles.subtitle]}>Today, {date?.slice(0, 10)}</Text>}
+      {subtitle && <Text style={[styles.subtitle, { color: theme?.colors?.textSecondary }]}>{subtitle}</Text>}
     </View>
     <TouchableOpacity onPress={() => navigation.navigate("Notifications")} style={[styles.avatar, { borderColor: theme?.colors?.border }]}>
       <Ionicons name="notifications-outline" size={20} />

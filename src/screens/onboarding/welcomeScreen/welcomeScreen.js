@@ -1,6 +1,7 @@
 // src/screens/onboarding/WelcomeScreen.js
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { Spacing } from '../../../components/constants/constant/responsive/responsive';
 
 const WelcomeScreen = ({ onNext }) => {
   return (
@@ -28,8 +29,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 24,
-    paddingVertical: 40,
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.lg,
     justifyContent: 'space-between',
   },
   content: {

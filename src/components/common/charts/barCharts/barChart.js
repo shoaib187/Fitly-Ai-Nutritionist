@@ -6,19 +6,20 @@ import { Fonts } from '../../../constants/fonts/font';
 import { FontSize, Layout, Spacing } from '../../../constants/constant/responsive/responsive';
 import LinearGradient from 'react-native-linear-gradient';
 
-const { width } = Dimensions.get('window');
-
 const MyLineChart = () => {
-  const todayIndex = 3; // Tue (0=Sat, 1=Sun, 2=Mon, 3=Tue...)
+  const date = new Date()
+
+  const todayIndex = date?.getDay(); // Tue (0=Sat, 1=Sun, 2=Mon, 3=Tue...)
+  console.log(todayIndex)
 
   const data = [
-    { value: 60, label: 'Sat' },
-    { value: 80, label: 'Sun' },
-    { value: 120, label: 'Mon' },
-    { value: 150, label: 'Tue' },
-    { value: 130, label: 'Wed' },
-    { value: 110, label: 'Thr' },
-    { value: 140, label: 'Fri' },
+    { value: 1.8, label: 'Sun' },
+    { value: 2.2, label: 'Mon' },
+    { value: 2.0, label: 'Tue' },
+    { value: 2.5, label: 'Wed' },
+    { value: 2.1, label: 'Thu' },
+    { value: 2.3, label: 'Fri' },
+    { value: 2.6, label: 'Sat' },
   ];
 
   // spacing adjusted to fill full width exactly
@@ -116,7 +117,7 @@ const MyLineChart = () => {
 
 const styles = StyleSheet.create({
   container: {
-    // paddingHorizontal: Spacing.sm,
+    paddingVertical: Spacing.lg
   },
   mainValue: {
     fontSize: FontSize.xxl,

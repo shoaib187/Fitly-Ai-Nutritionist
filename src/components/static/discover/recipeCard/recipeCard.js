@@ -3,25 +3,29 @@ import { TouchableOpacity, Image, View, Text, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Spacing, Radius, FontSize } from '../../../constants/constant/responsive/responsive';
+import { Spacing, Radius, FontSize, Layout } from '../../../constants/constant/responsive/responsive';
 import { colors } from '../../../constants/theme/theme';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 
 const RecipeCard = ({ item }) => (
-  <TouchableOpacity style={styles.recipeCard}>
+  <TouchableOpacity style={styles.recipeCard} activeOpacity={.8}>
     <Image source={{ uri: item.image }} style={styles.recipeImage} />
 
     {/* Premium Lock Icon */}
-    {item.isPremium && (
-      <MaterialCommunityIcons
-        name="lock"
-        size={18}
-        color={colors.white}
-        style={styles.lockIcon}
-      />
+    {!item.isPremium && (
+      <View style={styles.lockView}>
+        <MaterialCommunityIcons
+          name="lock"
+          size={14}
+          color={colors.buttonColor}
+        />
+      </View>
+      // <FontAwesome name="lock" size={18} color={colors.white} style={styles.lockIcon} />
     )}
 
     <LinearGradient
-      colors={['transparent', 'rgba(0,0,0,0.8)']}
+      colors={['transparent', 'rgba(0,0,0,0.5)']}
       style={styles.recipeGradient}
     >
       <View style={styles.recipeBadge}>
@@ -51,7 +55,7 @@ export default RecipeCard;
 const styles = StyleSheet.create({
   recipeCard: {
     width: '48%',
-    height: 180,
+    height: Layout.halfWidth * 1.2,
     borderRadius: Radius.lg,
     marginBottom: Spacing.md,
     overflow: 'hidden',
@@ -100,9 +104,19 @@ const styles = StyleSheet.create({
     marginLeft: Spacing.xs / 2,
   },
   lockIcon: {
-    position: 'absolute',
-    top: Spacing.xs,
-    right: Spacing.xs,
-    zIndex: 1,
+    // position: 'absolute',
+    // top: Spacing.sm,
+    // right: Spacing.sm,
+    // zIndex: 1,
   },
+  lockView: {
+    width: 24, height: 24,
+    backgroundColor: '#00000010',
+    position: 'absolute',
+    top: Spacing.sm,
+    right: Spacing.sm,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: Radius.xl
+  }
 });

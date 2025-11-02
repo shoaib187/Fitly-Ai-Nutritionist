@@ -10,7 +10,7 @@ const CulturalChallenge = () => (
     <Text style={styles.sectionTitle}>Cultural Challenges</Text>
 
     <TouchableOpacity style={styles.challengeCard} activeOpacity={0.8}>
-      <LinearGradient colors={['#6366F1', '#4F46E5']} style={styles.challengeGradient}>
+      <LinearGradient colors={['#f9f9f9', '#fff']} style={styles.challengeGradient}>
         <View style={styles.challengeBadge}>
           <Text style={styles.challengeBadgeText}>New</Text>
         </View>
@@ -34,7 +34,7 @@ export default CulturalChallenge;
 const styles = StyleSheet.create({
   section: {
     paddingHorizontal: Spacing.md,
-    marginBottom: Spacing.md
+    marginBottom: Spacing.md,
   },
   sectionTitle: {
     fontSize: FontSize.lg,
@@ -45,6 +45,9 @@ const styles = StyleSheet.create({
   challengeCard: {
     borderRadius: 16,
     overflow: 'hidden',
+    backgroundColor: '#699D7E80',
+    borderWidth: 1,
+    borderColor: "#eee"
   },
   challengeGradient: {
     padding: Spacing.lg,
@@ -65,13 +68,13 @@ const styles = StyleSheet.create({
   },
   challengeTitle: {
     fontSize: FontSize.md,
-    color: colors.white,
+    // color: colors.white,
     marginBottom: Spacing.xs,
     fontFamily: Fonts.RalewaySemiBold
   },
   challengeDescription: {
     fontSize: FontSize.base,
-    color: 'rgba(255,255,255,0.8)',
+    // color: 'rgba(255,255,255,0.8)',
     marginBottom: Spacing.md,
     fontFamily: Fonts.RalewayRegular
   },
@@ -81,7 +84,7 @@ const styles = StyleSheet.create({
   },
   challengeStat: {
     fontSize: FontSize.xs,
-    color: 'rgba(255,255,255,0.7)',
+    // color: 'rgba(255,255,255,0.7)',
     fontFamily: Fonts.RalewayMedium
   },
 });
